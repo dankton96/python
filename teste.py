@@ -20,11 +20,28 @@ def ClearScreen():
     if(platform.system()=="Windows"): os.system("cls")
     if(platform.system()=="Linux"): os.system("clear")
 
+def safeFileOpen(mode,filePath):
+    if mode not in ['r','w','x','a','t','b','r+','w+','x+','a+','t+','b+']:
+        return "InvalidOpenMode"
+    else:
+        try:
+            arq=open(mode,filePath)
+            return arq
+        except IOError as e:
+            arq=e.strerror()
+            return arq
+
 def RegCall():
-    arq=
+    arq=safeFileOpen("arq.txt","a")
+    if(arq=="IOError"):
+        print("Erro ao abrir o arquivo. Verifique o caminho do mesmo e/ou permissoes no local")
+    else:
+        
+    
 
 def menu():
     ClearScreen()
+    op="InvalidOption"
     while(op=="InvalidOption" or op!=5):
         try:    
             op=int(input(MenuText))
