@@ -12,8 +12,10 @@ MenuText="""
 allowPhoneChar=['1','2','3','4','5','6','7','8','9','0','+']
 #################################################################################################################################
 def isPhoneValid(string):
-    for c in string:
-        if(c not in allowPhoneChar):return false
+    if(len(string)<3):return False
+    if(string[0] not in allowPhoneChar):return False
+    for c in string[1:]:
+        if(c not in allowPhoneChar[:-1]):return False
     return true
 
 def ClearScreen():
@@ -31,12 +33,18 @@ def safeFileOpen(mode,filePath):
             arq=e.strerror()
             return arq
 
+def inputPhone(message):
+    var=input(message)
+    if(isPhoneValid(var)): return var
+    else: return "InvalidPhone"
+
 def RegCall():
     arq=safeFileOpen("arq.txt","a")
     if(arq=="IOError"):
         print("Erro ao abrir o arquivo. Verifique o caminho do mesmo e/ou permissoes no local")
     else:
-        
+        SourcePhone=inputPhone("Telefone de origem: ")
+        DestPhone=
     
 
 def menu():
