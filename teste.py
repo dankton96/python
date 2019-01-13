@@ -11,6 +11,10 @@ MenuText="""
           """
 allowPhoneChar=['1','2','3','4','5','6','7','8','9','0','+']
 #################################################################################################################################
+def ClearScreen():
+    if(platform.system()=="Windows"): os.system("cls")
+    if(platform.system()=="Linux"): os.system("clear")
+
 def isPhoneValid(string):
     if(string[0]=='+'):
         if(len(string)<4):return False
@@ -20,10 +24,6 @@ def isPhoneValid(string):
     for c in string[1:]:
         if(c not in allowPhoneChar[:-1]):return False
     return True
-
-def ClearScreen():
-    if(platform.system()=="Windows"): os.system("cls")
-    if(platform.system()=="Linux"): os.system("clear")
 
 def safeFileOpen(mode,filePath):
     if mode not in ['r','w','x','a','t','b','r+','w+','x+','a+','t+','b+']:
@@ -48,20 +48,26 @@ def RegCall():
     else:
         while(True):
             ClearScreen()
-            SourcePhone=inputPhone("Telefone de origem: ")
-            while(SourcePhone=="InvalidPhone"):
-                SourcePhone=inputPhone("Telefone de origem invalido. Insira um numero valido:")
-            DestPhone=inputPhone("Telefone de destino: ")
-            while(DestPhone=="InvalidPhone"):
-                DestPhone=inputPhone("Telefone de destino invalido. Insira um numero valido:")
-            try: 
-                CallTime=int(input("Duracao da chamada em segundos: "))
-                if(CallTime<=0):CallTime="TypeError"
-                while(CallTime=="TypeError"):
-                    try:
+            while(True):
+                if(SourcePhone=="InvalidPhone"):
+                    SourcePhone=inputPhone("Telefone de origem invalido. Insira um numero valido:")
+                else:
+                    SourcePhone=inputPhone("Telefone de origem: ")
+                if(SourcePhone!="InvalidPhone"):break
+            while(True):
+                if(DestPhone=="InvalidPhone"):
+                    DestPhone=inputPhone("Telefone de destino invalido. Insira um numero valido:")
+                else:
+                    DestPhone=inputPhone("Telefone de destino: ")
+                if(DestPhone!="InvalidPhone"):break
+            try:
+                while(True):
+                    if(CallTime=="TypeError"):
                         CallTime=int(input("Duracao da chamada invalida. Informe um tempo em segundos e maior do que 0:"))
-                    except TypeError:
-                        CallTime="TypeError"
+                    else:                    
+                        CallTime=int(input("Duracao da chamada em segundos: "))
+                    if(CallTime<=0):CallTime="TypeError"
+                    if(CallTime!="TypeError"):break
             except TypeError:
                 CallTime="TypeError"
 def menu():
