@@ -67,9 +67,11 @@ def RegCall():
                     else:                    
                         CallTime=int(input("Duracao da chamada em segundos: "))
                     if(CallTime<=0):CallTime="TypeError"
+                    arq.write(SourcePhone,"\t",DestPhone,"\t",CallTime)
                     if(CallTime!="TypeError"):break
             except TypeError:
                 CallTime="TypeError"
+            
 def menu():
     ClearScreen()
     op="InvalidOption"
