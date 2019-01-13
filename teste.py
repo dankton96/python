@@ -68,6 +68,7 @@ def RegCall():
                     if(CallTime<=0):CallTime="TypeError"
                     if(CallTime!="TypeError"):
                         arq.write(SourcePhone,"\t",DestPhone,"\t",CallTime)
+                        arq.close()
                         break
             except TypeError:
                 CallTime="TypeError"
