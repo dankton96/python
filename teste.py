@@ -24,7 +24,7 @@ def isPhoneValid(string):
         if(c not in allowPhoneChar[:-1]):return False
     return True
 
-def safeFileOpen(mode,filePath):
+def safeFileOpen(filePath,mode):
     if mode not in ['r','w','x','a','t','b','r+','w+','x+','a+','t+','b+']:
         return "InvalidOpenMode"
     else:
