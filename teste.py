@@ -16,7 +16,7 @@ def isPhoneValid(string):
     if(string[0] not in allowPhoneChar):return False
     for c in string[1:]:
         if(c not in allowPhoneChar[:-1]):return False
-    return true
+    return True
 
 def ClearScreen():
     if(platform.system()=="Windows"): os.system("cls")
