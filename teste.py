@@ -1,7 +1,6 @@
 import platform, os, time
 
 ###############################################################constants#######################################################
-delaySecond=time.sleep()
 MenuText="""
             1)Registrar chamada
             2)Ler Ficheiro
@@ -81,13 +80,13 @@ def menu():
             ClearScreen()
             if(op not in list(range(1,6))):
                 print("Opcao invalida. Selecione as opcoes disponiveis (1-5)")
-                delaySecond(3)
+                time.sleep(3)
                 op="InvalidOption"
             elif(op==1):
                 RegCall()
         except TypeError:
             print("Opcao invalida. Selecione as opcoes disponiveis (1-5)")
-            delaySecond(3)
+            time.sleep(3)
             op="InvalidOption"
     return op
 #op=0
