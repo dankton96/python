@@ -12,7 +12,10 @@ MenuText="""
 allowPhoneChar=['1','2','3','4','5','6','7','8','9','0','+']
 #################################################################################################################################
 def isPhoneValid(string):
-    if(len(string)<3):return False
+    if(string[0]=='+'):
+        if(len(string)<4):return False
+    else:
+        if(len(string)<3):return False
     if(string[0] not in allowPhoneChar):return False
     for c in string[1:]:
         if(c not in allowPhoneChar[:-1]):return False
@@ -43,9 +46,14 @@ def RegCall():
     if(arq=="IOError"):
         print("Erro ao abrir o arquivo. Verifique o caminho do mesmo e/ou permissoes no local")
     else:
-        SourcePhone=inputPhone("Telefone de origem: ")
-        DestPhone=
-    
+        while(True):
+            ClearScreen()
+            SourcePhone=inputPhone("Telefone de origem: ")
+            while(SourcePhone=="InvalidPhone"):
+                SourcePhone=inputPhone("Telefone de origem invalido. Insira um numero valido:")
+            DestPhone=inputPhone("Telefone de destino: ")
+            while(DestPhone=="InvalidPhone"):
+                DestPhone=inputPhone("Telefone de destino invalido. Insira um numero valido:")
 
 def menu():
     ClearScreen()
