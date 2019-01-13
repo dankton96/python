@@ -54,7 +54,16 @@ def RegCall():
             DestPhone=inputPhone("Telefone de destino: ")
             while(DestPhone=="InvalidPhone"):
                 DestPhone=inputPhone("Telefone de destino invalido. Insira um numero valido:")
-
+            try: 
+                CallTime=int(input("Duracao da chamada em segundos: "))
+                if(CallTime<=0):CallTime="TypeError"
+                while(CallTime=="TypeError"):
+                    try:
+                        CallTime=int(input("Duracao da chamada invalida. Informe um tempo em segundos e maior do que 0:"))
+                    except TypeError:
+                        CallTime="TypeError"
+            except TypeError:
+                CallTime="TypeError"
 def menu():
     ClearScreen()
     op="InvalidOption"
@@ -67,7 +76,7 @@ def menu():
                 delaySecond(3)
                 op="InvalidOption"
             elif(op==1):
-                
+                RegCall()
         except TypeError:
             print("Opcao invalida. Selecione as opcoes disponiveis (1-5)")
             delaySecond(3)
