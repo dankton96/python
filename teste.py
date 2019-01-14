@@ -32,7 +32,7 @@ def safeFileOpen(filePath,mode):
             arq=open(mode,filePath)
             return arq
         except IOError as e:
-            arq=e.strerror()
+            arq="IOError"
             return arq
 
 def inputPhone(message):
@@ -72,7 +72,19 @@ def RegCall():
                         break
             except TypeError:
                 CallTime="TypeError"
-            
+
+def ReadCallReg(fileName):
+	arq=safeFileOpen(fileName,'r')
+	if(arq=="IOError"): 
+        print("Erro ao abrir o arquivo. Verifique o caminho e nome do mesmo e/ou permissoes no local")
+        return "IOError"
+	else:
+		reg=[]
+		for line in arq:
+			lineData=line.split()
+			reg.append([lineData])
+		arq.close()
+		return reg
 def menu():
     ClearScreen()
     op="InvalidOption"
@@ -86,11 +98,18 @@ def menu():
                 op="InvalidOption"
             elif(op==1):
                 RegCall()
+            elif(op==2):
+                FileStr=input("Informe o nome do arquivo a ser lido:")
+                Reg=ReadCallReg(FileStr)
+            elif(op==3):
+                if(len(Reg)==0):print("Nenhum cliente cadastrado")
+                else:
+            return op
+                    
         except TypeError:
             print("Opcao invalida. Selecione as opcoes disponiveis (1-5)")
             time.sleep(3)
             op="InvalidOption"
-    return op
-#op=0
-#while(op!=5):
- #   if(op==1)
+while(True):
+    sel=menu()
+    if(sel==5):break
