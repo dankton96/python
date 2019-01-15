@@ -82,9 +82,17 @@ def ReadCallReg(fileName):
 		reg=[]
 		for line in arq:
 			lineData=line.split()
-			reg.append([lineData])
+			reg.append(lineData)
 		arq.close()
 		return reg
+
+def listClients(r):
+    clientsList=dict()
+    for t in r:
+        if(t[0] not in clientList.keys()): clientList[t[0]]=0
+    return clientList.keys()
+
+
 def menu():
     ClearScreen()
     op="InvalidOption"
@@ -104,6 +112,9 @@ def menu():
             elif(op==3):
                 if(len(Reg)==0):print("Nenhum cliente cadastrado")
                 else:
+                    print(listClients(Reg))
+            elif(op==4):
+                
             return op
                     
         except TypeError:
