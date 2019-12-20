@@ -11,21 +11,25 @@ for i in sub:
     text+=str(i)
 pattern=''
 i=0
+j2n=False
 places2add=[]
-for c in text[:-4]:
-    pattern=c+text[i+1]+text[i+2]+text[i+3]
+for c in text[:-3]:
+    pattern=c+text[i+1]+text[i+2]
     if(pattern[0] in numList):
         if(pattern[-1] in letterList):
-            if('<i' not in pattern):
-                places2add.append(i)
-                #print(pattern+'\n')
+            if(('<i>' not in pattern) and ('<' not in pattern) and ('<i' not in pattern) and ('i>' not in pattern) and ('>' not in pattern) ):
+                if('\r\n' not in pattern[1:-1]):
+                    places2add.append(i)
+                    #print(pattern+'\n')
     i+=1
 i=0
+############################## PROBLEM HERE (I GUESS) ##########################################
 for p in places2add:
-    text=text[:p]+'<i>'+text[(p+1):]
+    text=text[:(p+2)]+'<i>'+text[(p+2):]
     i+=1
-    for p in places2add[i:]:
-        p+=3
+#    for d in places2add[i:]:
+#        d+=3
+#################################################################################################
 outFile=open("CorrectedSub.srt","w")
 outFile.write(text)
 file.close()
