@@ -20,8 +20,12 @@ for c in text[:-4]:
                 places2add.append(i)
                 #print(pattern+'\n')
     i+=1
+i=0
 for p in places2add:
     text=text[:p]+'<i>'+text[(p+1):]
+    i+=1
+    for p in places2add[i:]:
+        p+=3
 outFile=open("CorrectedSub.srt","w")
 outFile.write(text)
 file.close()
