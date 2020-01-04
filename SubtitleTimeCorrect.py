@@ -5,6 +5,9 @@ letterList=['a','b','c','d','e','f','g','i','h','j','k','l','m','n','o','p','q',
 FilePath=easygui.fileopenbox("Selecione o arquivo a ser manipulado:")
 file=open(FilePath,'r+')
 sub=[]
+def SubTesting(SubTList):
+ for l in SubTList:
+    print(l)
 for sc in file:
     sub.append(sc)
 text=''
@@ -24,12 +27,12 @@ for l in lines:
     i+=1
 i=0
 for p in places2calc:
-    if(len(lines[i])!=29):
-        del(places2calc[i])
-    i+=1
+    if(len(lines[p])!=29):
+        del(places2calc[p])
 #time diference to correct -00:01:26,647
 TimeDifStr='10/10/2000 00:01:26,647'
 TimeDif=datetime.datetime.strptime(TimeDifStr, '%d/%m/%Y %H:%M:%S,%f')
+#SubTesting(lines)
 for p in places2calc:
         p1Str='10/10/2000 '+lines[p][:12]
         p2Str='10/10/2000 '+lines[p][17:]
@@ -43,15 +46,18 @@ for p in places2calc:
         i=0
         newline=newline.replace('.',',')
         lines[p]=newline
+#SubTesting(lines)
 places2calc.clear()
 for c in lines:
     if(len(c)<=3):
         if(c.isnumeric()):
             places2calc.append(i)
     i+=1
+#SubTesting(lines)
 for n in places2calc:
     lines[n]=str((int(lines[n])-33))
 file.close()
+#SubTesting(lines)
 newFile="CorrectedSub.srt"
 file=open(newFile,'w')
 for l in lines:
