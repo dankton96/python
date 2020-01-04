@@ -17,7 +17,6 @@ for l in lines:
     if(i!=0):
         if(len(lines[i-1])<=3):
             if(len(lines[i])==29):
-                #print(l)
                 places2calc.append(i)
     else:
         #print(l)
@@ -28,7 +27,6 @@ for p in places2calc:
     if(len(lines[i])!=29):
         del(places2calc[i])
     i+=1
-#''
 #time diference to correct -00:01:26,647
 TimeDifStr='10/10/2000 00:01:26,647'
 TimeDif=datetime.datetime.strptime(TimeDifStr, '%d/%m/%Y %H:%M:%S,%f')
@@ -37,12 +35,10 @@ for p in places2calc:
         p2Str='10/10/2000 '+lines[p][17:]
         p1=datetime.datetime.strptime(p1Str, '%d/%m/%Y %H:%M:%S,%f')
         p2=datetime.datetime.strptime(p2Str, '%d/%m/%Y %H:%M:%S,%f')
-        #print(p1,p2, sep='\n')
         newP1=p1-TimeDif
         newP2=p2-TimeDif
         p1Str=str(newP1)
         p2Str=str(newP2)
-        #0:01:26,647
         newline="{:02d}:{:02d}:{:06.3f}".format(int(p1Str[:1]),int(p1Str[2:4]),float(p1Str[5:]))+' --> '+"{:02d}:{:02d}:{:06.3f}".format(int(p2Str[:1]),int(p2Str[2:4]),float(p2Str[5:]))
         lines[p]=newline
 i=0
@@ -60,5 +56,3 @@ file=open(newFile,'w')
 for l in lines:
     file.write(l+'\n')
 file.close()
-#00:02:26,647 --> 00:02:29,617
-#outFile.close()
