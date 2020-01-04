@@ -51,11 +51,6 @@ for c in lines:
     i+=1
 for n in places2calc:
     lines[n]=str((int(lines[n])-33))
-#    i=0
-#    for c in lines[n]:
-#        if(c=='.'):
-#            lines[n][i]=','
-#        i+=1
 file.close()
 newFile="CorrectedSub.srt"
 file=open(newFile,'w')
