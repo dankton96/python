@@ -40,7 +40,7 @@ for p in places2calc:
         #print(p1,p2, sep='\n')
         newP1=p1-TimeDif
         newP2=p2-TimeDif
-        print(newP1,newP2,sep='\n')
+        print(str(newP1),str(newP2),sep='\n')
         
 #00:02:26,647 --> 00:02:29,617
 numPlaces=[0,1,3,4,6,7,9,10,11,17,18,20,21,23,24,26,27,28]
