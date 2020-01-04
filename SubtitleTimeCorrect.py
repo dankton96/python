@@ -40,8 +40,9 @@ for p in places2calc:
         p1Str=str(newP1)
         p2Str=str(newP2)
         newline="{:02d}:{:02d}:{:06.3f}".format(int(p1Str[:1]),int(p1Str[2:4]),float(p1Str[5:]))+' --> '+"{:02d}:{:02d}:{:06.3f}".format(int(p2Str[:1]),int(p2Str[2:4]),float(p2Str[5:]))
+        i=0
+        newline=newline.replace('.',',')
         lines[p]=newline
-i=0
 places2calc.clear()
 for c in lines:
     if(len(c)<=3):
@@ -50,6 +51,11 @@ for c in lines:
     i+=1
 for n in places2calc:
     lines[n]=str((int(lines[n])-33))
+#    i=0
+#    for c in lines[n]:
+#        if(c=='.'):
+#            lines[n][i]=','
+#        i+=1
 file.close()
 newFile="CorrectedSub.srt"
 file=open(newFile,'w')
