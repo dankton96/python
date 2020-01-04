@@ -28,7 +28,7 @@ for p in places2calc:
     if(len(lines[i])!=29):
         del(places2calc[i])
     i+=1
-#newline=''
+#''
 #time diference to correct -00:01:26,647
 TimeDifStr='10/10/2000 00:01:26,647'
 TimeDif=datetime.datetime.strptime(TimeDifStr, '%d/%m/%Y %H:%M:%S,%f')
@@ -43,9 +43,10 @@ for p in places2calc:
         p1Str=str(newP1)
         p2Str=str(newP2)
         #0:01:26,647
-        print("{:02d}:{:02d}:{:06.3f}".format(int(p1Str[:1]),int(p1Str[2:4]),float(p1Str[5:])),"{:02d}:{:02d}:{:06.3f}".format(int(p2Str[:1]),int(p2Str[2:4]),float(p2Str[5:])),sep=' --> ')
-        
+        newline="{:02d}:{:02d}:{:06.3f}".format(int(p1Str[:1]),int(p1Str[2:4]),float(p1Str[5:]))+' --> '+"{:02d}:{:02d}:{:06.3f}".format(int(p2Str[:1]),int(p2Str[2:4]),float(p2Str[5:]))
+        lines[p]=newline
+for c in lines:
+    print(c)
 #00:02:26,647 --> 00:02:29,617
-numPlaces=[0,1,3,4,6,7,9,10,11,17,18,20,21,23,24,26,27,28]
 file.close()
 #outFile.close()
