@@ -45,8 +45,20 @@ for p in places2calc:
         #0:01:26,647
         newline="{:02d}:{:02d}:{:06.3f}".format(int(p1Str[:1]),int(p1Str[2:4]),float(p1Str[5:]))+' --> '+"{:02d}:{:02d}:{:06.3f}".format(int(p2Str[:1]),int(p2Str[2:4]),float(p2Str[5:]))
         lines[p]=newline
+i=0
+places2calc.clear()
 for c in lines:
-    print(c)
-#00:02:26,647 --> 00:02:29,617
+    if(len(c)<=3):
+        if(c.isnumeric()):
+            places2calc.append(i)
+    i+=1
+for n in places2calc:
+    lines[n]=str((int(lines[n])-33))
 file.close()
+newFile="CorrectedSub.srt"
+file=open(newFile,'w')
+for l in lines:
+    file.write(l+'\n')
+file.close()
+#00:02:26,647 --> 00:02:29,617
 #outFile.close()
